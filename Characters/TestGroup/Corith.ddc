@@ -1,0 +1,26 @@
+name:Corith Shaelin
+race:Human
+nla:0
+extrahp:3
+acp:2
+levels:fighter,fighter,fighter,fighter,fighter,fighter,fighter,fighter
+
+STR:18
+DEX:13
+CON:14
+INT:10
+WIS:8
+CHA:5
+
+plusfort:0
+plusref:0
+pluswill:2
+
+ranks:
+    climb:11
+    jump:11
+    swim:11
+modifiers:
+notes:
+Corith's important feats are Power Attack, Cleave/Great Cleave, and Weapon Focus/Weapon Specialisation/Greater Weapon Focus: Greatsword.
+Corith is also a fantastic example of why rolled stats are a bad idea.
