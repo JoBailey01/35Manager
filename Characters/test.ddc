@@ -1,0 +1,42 @@
+name:Elenties Malesi
+race:Half-Elf
+nla:0
+extrahp:0
+acp:0
+levels:wizard,wizard,wizard,wizard,wizard,wizard,wizard,wizard
+
+STR:7
+DEX:16
+CON:15
+INT:19
+WIS:15
+CHA:14
+
+plusfort:0
+plusref:0
+pluswill:0
+
+ranks:
+    balance:2
+    conc:11
+    ds:4
+    dip:1
+    k arc:11
+    k planes:7
+    spellcraft:11
+    spot:1
+    umd:1
+    sl:3
+modifiers:
+    appraise:5
+    ds:2
+    dip:2
+    gi:2
+    lis:3
+    sea:1
+    spellcraft:4
+    spot:3
+    umd:2
+notes:
+Elenties Malesi's spell list is on her paper character sheet.
+The second 'e' in 'Elenties' and the 'e' in 'Malesi' have a forward accent.

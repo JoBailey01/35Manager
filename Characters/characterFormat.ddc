@@ -1,0 +1,24 @@
+name:[name]
+race:[race name]
+nla:0
+extrahp:[extra HP from feats or items]
+acp:[current ACP for this character]
+levels:[comma-separated list of classes. For example, "wizard,wizard,wizard,wizard"]
+
+STR:[ability score]
+DEX:[ability score]
+CON:[ability score]
+INT:[ability score]
+WIS:[ability score]
+CHA:[ability score]
+
+plusfort:[additional modifiers]
+plusref:[additional modifiers]
+pluswill:[additional modifiers]
+
+ranks:
+    [skill alias after four spaces]:[number of skill ranks, as a positive or negative number. Can but is not required to use + for positive numbers.]
+modifiers:
+    [skill alias after four spaces]:[skill modifier, as a positive or negative number. Can but is not required to use + for positive numbers.]
+notes:
+[general character notes]
