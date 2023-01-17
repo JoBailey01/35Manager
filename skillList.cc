@@ -125,7 +125,7 @@ Skill::Skill(const char* name, int ability, bool isTrained, int trainCap, bool i
 
 //Define blank constructor for Skill. This creates a blank dummy value.
 Skill blankSkill(){
-    return *(new Skill("[Invalid Skill]", STR, false, 0, false, false, -1, 0, false, -1, -1, std::vector<std::string>()));
+    return Skill("[Invalid Skill]", STR, false, 0, false, false, -1, 0, false, -1, -1, std::vector<std::string>());
 }
 
 //A default blank dummy skill
