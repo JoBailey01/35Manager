@@ -30,7 +30,7 @@ std::string abilityName(int);
 std::string abilityAbbr(int);
 
 //Sourcebooks
-enum sourcebooks{PHB=0, EPH=1, MM=2, ROD=3};
+enum sourcebooks{BoED=0,BoVD=1,CAd=2,CAr=3,CD=4,CM=5,CPs=6,CSc=7,CW=8,DMG=9,DMGII=10,DoE=11,Draco=12,DrM=13,EPH=14,FrB=15,HB=16,LM=17,MiH=18,MM=19,PHB=20,PHBII=21,PlaH=22,RoD=23,Sand=24,Storm=25,UA=26,DrMag=27};
 std::string bookAbbr(int);
 std::string bookName(int);
 

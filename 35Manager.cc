@@ -82,10 +82,12 @@ SavingThrows SavingThrows::sumSaves(SavingThrows other){
 }
 
 
-//Function to get a good or bad save bonus based on HD
+//Function to get a good or bad save bonus, in sixths, based on HD (e.g., a save bonus of 3 is 18/6)
 int saveBonus(bool goodSave, int HD){
-    if (goodSave) return 2 + (HD/2);
-    else return (HD/3);
+    //if (goodSave) return 2 + (HD/2);
+    //else return (HD/3);
+    if(goodSave) return 12 + (HD * 3);
+    else return HD * 2;
 }
 
 //Return letters representing a goodSaveNum value
@@ -123,8 +125,9 @@ bool goodSave(int type, int goodSaves){
     }
 }
 
-//Get the saving throw bonus for all three saving throws as a SavingThrows object based on HD and good saves
+//Get the saving throw bonus for all three saving throws as a SavingThrows object based on HD and good saves. Return in units of sixths (e.g., 2.5/2.5/0.33 would be 15/15/2).
 SavingThrows saveBonuses(int goodSaves, int HD){
+    //return SavingThrows(saveBonus(goodSave(F, goodSaves), HD) / 6, saveBonus(goodSave(R, goodSaves), HD) / 6, saveBonus(goodSave(W, goodSaves), HD) / 6);
     return SavingThrows(saveBonus(goodSave(F, goodSaves), HD), saveBonus(goodSave(R, goodSaves), HD), saveBonus(goodSave(W, goodSaves), HD));
 }
 
@@ -168,10 +171,38 @@ void addBook(const char* abbr, const char* name){
 
 //Populate sourcebook lists
 void addBookList(){
-    addBook("PHB", "Player's Handbook");
+    /*addBook("PHB", "Player's Handbook");
     addBook("EPH", "Expanded Psionics Handbook");
     addBook("MM", "Monster Manual");
-    addBook("ROD", "Races of Destiny");
+    addBook("RoD", "Races of Destiny");*/
+    addBook("BoED","Book of Exalted Deeds");
+    addBook("BoVD","Book of Vile Darkness");
+    addBook("CAd","Complete Adventurer");
+    addBook("CAr","Complete Arcane");
+    addBook("CD","Complete Divine");
+    addBook("CM","Complete Mage");
+    addBook("CPs","Complete Psionic");
+    addBook("CSc","Complete Scoundrel");
+    addBook("CW","Complete Warrior");
+    addBook("DMG","Dungeon Master's Guide");
+    addBook("DMGII","Dungeon Master's Guide II");
+    addBook("DoE","Dragons of Eberron");
+    addBook("Draco","Draconomicon");
+    addBook("DrM","Dragon Magic");
+    addBook("EPH","Expanded Psionics Handbook");
+    addBook("FrB","Frostburn");
+    addBook("HB","Homebrew");
+    addBook("LM","Libris Mortis");
+    addBook("MiH","Miniatures Handbook");
+    addBook("MM","Monster Manual");
+    addBook("PHB","Player's Handbook");
+    addBook("PHBII","Player's Handbook II");
+    addBook("PlaH","Planar Handbook");
+    addBook("RoD","Races of Destiny");
+    addBook("Sand","Sandstorm");
+    addBook("Storm","Stormwrack");
+    addBook("UA","Unearthed Arcana");
+    addBook("DrMag","Dragon Magazine");
 };
 
 //Get sourcebook name or abbreviation from the sourcebook list
@@ -228,6 +259,8 @@ int main(int argc, char** argv){
 
     //printf("Hello, Greyhawk!\n\n");
     terminal();
+
+    
     
     return 0;
 }

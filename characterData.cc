@@ -3,6 +3,8 @@
 //typedef std::tuple<Skill*, int> skillTuple;
 //typedef std::vector<skillTuple> skillSet;
 
+//If characterData.cc is compiled with -D NO_FRAC, then 35Manager will not apply fractional base bonus rules (Unearthed Arcana, page 73). By default, it will apply those rules.
+
 //Determine how many ranks LChar has in a given skill
 int LChar::getRanks(Skill* skill){
     //Iterate over skillRanks
@@ -64,10 +66,11 @@ std::string LChar::getClass(){
         int l; CClass* c; std::tie(c, l) = t;
         
         //Add formatted string to output
-        output += c->name + " " + std::to_string(l) + ",";
+        output += c->name + " " + std::to_string(l) + ", ";
     }
 
-    //Remove final ,
+    //Remove final ", ""
+    output.pop_back();
     output.pop_back();
 
     return output;
@@ -252,7 +255,7 @@ int LChar::update(){
         if (i==0){
             this->HP += l->HD;
         //HP at even levels
-        } else if (i % 2 == 0) {
+        } else if ((i - 1) % 2 == 0) {
             this->HP += (l->HD/2);
         //HP at higher odd levels
         } else {
@@ -299,12 +302,34 @@ int LChar::update(){
         std::tie(c, i) = t;
 
         //Add BAB contribution from this class
-        this->BAB = i * c->BAB / 4;
+        #ifdef NO_FRAC
+        this->BAB += i * c->BAB / 4;
+        #else
+        this->BAB += i * c->BAB;
+        #endif
 
-        //Add saving throw contribution from this class
+        //Add saving throw contribution from this class (in sixths)
         SavingThrows temp = saveBonuses(c->goodSaves, i);
+
+        //Remove fractions from bonuses, if applicable, using integer division.
+        #ifdef NO_FRAC
+        temp.fort = ((int) temp.fort / 6) * 6;
+        temp.ref = ((int) temp.ref / 6) * 6;
+        temp.will = ((int) temp.will / 6) * 6;
+        #endif
+
         this->saves = temp.sumSaves(this->saves);
     }
+
+    //Divide cumulative BAB by 4. This ensures that fractional save bonuses apply correctly.
+    #ifndef NO_FRAC
+    this->BAB /= 4;
+    #endif
+
+    //Divide saves by 6 to get the actual saving throw bonus
+    this->saves.fort /= 6;
+    this->saves.ref /= 6;
+    this->saves.will /= 6;
 
     //Add appropriate ability score modifiers and NLA to saving throws
     this->saves.fort += this->scores.getMod(CON) - this->NLA + this->plusFort;
